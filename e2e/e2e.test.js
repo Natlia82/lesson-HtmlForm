@@ -22,11 +22,9 @@ describe('INN/OGRN form', () => {
 
     test('should add .valid class for valid inn', async() => {
         await page.goto(baseUrl);
-        const form = await page.$('[data-widget=innogrn-form-widget]');
-        const input = await form.$('[data-id=innogrn-input]');
-        await input.type('7715964180');
-        const submit = await form.$('[data-id=innogrn-submit]');
+        const form = await page.$('[data-widget=widget]');
+        const submit = await form.$('[data-submit=submit]');
         submit.click();
-        await page.waitFor('[data-id=innogrn-input].valid');
+        await page.waitForSelector('.form-hint');
     });
 });
